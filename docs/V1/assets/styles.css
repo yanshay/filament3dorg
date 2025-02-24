@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.75);  /* Semi-transparent white */
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.tag-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tag-box {
+    background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(240,240,240,0.8));
+    border-radius: 15px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    min-width: 200px;
+}
+
+.tag-box:hover {
+    transform: translateY(-5px);
+}
+
+.tag-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.tag-value {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #333;
+}
+
+.spool-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.spool-outer {
+    width: 75%;
+    padding-bottom: 75%; /* Make it a perfect circle */
+    border-radius: 50%;
+    background-color: #FF0066;  /* Will be set from script */
+    position: relative;
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.15);
+
+}
+
+.spool-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 5px 15px 30px rgba(0, 0, 0, 0.15);
+
+}
+
+.color-hex {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.material-type {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.temperature-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.temperature-box {
+    margin: 0 15px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(240,240,240,0.8));
+    border-radius: 15px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    display: inline-block;
+    min-width: 150px;
+    flex: 0 0 auto; /* Don't allow flex to resize */
+}
+
+.temperature-box:hover {
+    transform: translateY(-5px);
+}
+
+.temperature-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.temperature-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+}
+
+/* Style for the degree symbol and C */
+.degree {
+    font-size: 1em; /* Same size as the number */
+    font-weight: 700;
+}
+
+.celsius {
+    font-size: 0.6em;
+    font-weight: 600;
+    position: relative;
+    top: -0.5em; /* Superscript positioning */
+    margin-left: 1px;
+}
+
+.table-container {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.4em;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: none;
+}
+
+thead tr {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+th {
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1em;
+}
+
+td {
+    color: #333;
+    font-size: 1.2em;
+}
+
+.row-header {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Create an actual hole in the spool */
+.cutout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #ffffff; /* Matches background color of container */
+    mix-blend-mode: destination-out;
+}
+
+/* Responsive adjustments - force side-by-side even on smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    
+    .temperature-container {
+        flex-direction: row; /* Keep them side by side */
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    
+    .temperature-box {
+        margin: 10px 5px;
+        padding: 10px 15px;
+        min-width: 100px;
+    }
+    
+    .temperature-value {
+        font-size: 1.5em;
+    }
+    
+    .material-type {
+        font-size: 1.8em;
+    }
+    
+    th, td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
