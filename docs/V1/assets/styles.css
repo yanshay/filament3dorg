@@ -91,7 +91,7 @@ body {
 
 .color-hex {
     position: absolute;
-    top: 12%;
+    top: 9%;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
