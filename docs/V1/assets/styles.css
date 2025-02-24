@@ -22,6 +22,8 @@ body {
     width: 90%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(5px);
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .tag-container {
