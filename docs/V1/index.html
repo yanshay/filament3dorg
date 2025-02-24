@@ -53,17 +53,17 @@
                         <td id="kValue02"></td>
                     </tr>
                     <tr id="Nozzle04Row">
-                        <td class="row-header">0.2</td>
+                        <td class="row-header">0.4</td>
                         <td id="name04"></td>
                         <td id="kValue04"></td>
                     </tr>
                     <tr id="Nozzle06Row">
-                        <td class="row-header">0.2</td>
+                        <td class="row-header">0.6</td>
                         <td id="name06"></td>
                         <td id="kValue06"></td>
                     </tr>
                     <tr id="Nozzle08Row">
-                        <td class="row-header">0.2</td>
+                        <td class="row-header">0.8</td>
                         <td id="name08"></td>
                         <td id="kValue08"></td>
                     </tr>
@@ -128,6 +128,12 @@
         // document.getElementById('FI').textContent = parsedParams.FI;
 
         // Display K parameters
+
+        document.getElementById('Nozzle02Row').style.display = parsedParams.K2 ? 'table-row' : 'none';
+        document.getElementById('Nozzle04Row').style.display = parsedParams.K4 ? 'table-row' : 'none';
+        document.getElementById('Nozzle06Row').style.display = parsedParams.K6 ? 'table-row' : 'none';
+        document.getElementById('Nozzle08Row').style.display = parsedParams.K8 ? 'table-row' : 'none';
+
         document.getElementById('name02').textContent = parsedParams.K2 ? parsedParams.K2.name : "";
         document.getElementById('name04').textContent = parsedParams.K4 ? parsedParams.K4.name : "";
         document.getElementById('name06').textContent = parsedParams.K6 ? parsedParams.K6.name : "";
