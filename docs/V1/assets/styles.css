@@ -241,14 +241,23 @@ td {
         padding: 25px;
     }
     
+    .tag-container {
+      margin-bottom: 20px;
+    }
+
+    .spool-container {
+      margin-bottom: 20px;
+    }
+
     .temperature-container {
         flex-direction: row; /* Keep them side by side */
         justify-content: center;
         flex-wrap: nowrap;
+        margin-bottom: 20px;
     }
     
     .temperature-box {
-        margin: 10px 5px;
+        margin: 0px 5px;
         padding: 10px 15px;
         min-width: 100px;
     }
@@ -261,8 +270,14 @@ td {
         font-size: 1.8em;
     }
     
+    .table-container {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+
     th, td {
         padding: 8px;
         font-size: 0.9em;
     }
+  
 }
