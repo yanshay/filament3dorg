@@ -117,6 +117,8 @@
         document.getElementById('tagId').textContent = parsedParams.ID;
         document.getElementById('materialType').textContent = parsedParams.M;
         document.getElementById('colorHex').textContent = parsedParams.C;
+        const styleColor = `#${parsedParams.C.slice(0, 6)}`;
+        document.querySelector('.spool-outer').style.backgroundColor = styleColor;
         document.getElementById('minTemp').textContent = parsedParams.NN;
         document.getElementById('maxTemp').textContent = parsedParams.NX;
         // document.getElementById('FI').textContent = parsedParams.FI;

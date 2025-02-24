@@ -71,7 +71,6 @@ body {
     background-color: #FF0066;  /* Will be set from script */
     position: relative;
     box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.15);
-
 }
 
 .spool-inner {
