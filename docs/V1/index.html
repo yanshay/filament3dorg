@@ -1,148 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Filament Information</title>
-    <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="tag-container">
-            <div class="tag-box">
-                <div class="tag-title">Tag ID</div>
-                <div class="tag-value" id="tagId">FIL-2023-042</div>
-            </div>
+      <div class="tag-container">
+        <div class="tag-box">
+          <div class="tag-title">Tag ID</div>
+          <div class="tag-value" id="tagId">Tag ID</div>
         </div>
-        
-        <div class="spool-container">
-            <div class="spool-outer" id="spoolOuter">
-                <!-- Different approach to create a true cutout effect -->
-                <div class="cutout"></div>
-                <div class="spool-inner"></div>
-                <div class="color-hex" id="colorHex">#FF0066</div>
-                <div class="material-type" id="materialType">PETG</div>
+      </div>
+
+      <div class="spool-container">
+        <div class="spool-outer" id="spoolOuter">
+          <!-- Different approach to create a true cutout effect -->
+          <div class="cutout"></div>
+          <div class="spool-inner"></div>
+          <div class="color-hex" id="colorHex">#FFFFFF</div>
+          <div class="material-type" id="materialType">TYPE</div>
+          <div class="filament-info-wrapper">
+            <div class="filament-info">
+              <div class="filament-name" id="filament-name"></div>
+              <div id="filament-decription-section">
+                <div class="filament-info-line">Brand/Type</div>
+                <div class="filament-description" id="filament-description">Description</div>
+              </div>
             </div>
+          </div>
         </div>
-        
-        <div class="temperature-container">
-            <div class="temperature-box">
-                <div class="temperature-title">Min Temp</div>
-                <div class="temperature-value" id="minTemp">180<span class="degree">°</span><span class="celsius">C</span></div>
-            </div>
-            <div class="temperature-box">
-                <div class="temperature-title">Max Temp</div>
-                <div class="temperature-value" id="maxTemp">250<span class="degree">°</span><span class="celsius">C</span></div>
-            </div>
+      </div>
+
+      <div class="temperature-container">
+        <div class="temperature-box">
+          <div class="temperature-title">Min Temp</div>
+          <div class="temperature-value" id="minTemp">
+            180<span class="degree">°</span><span class="celsius">C</span>
+          </div>
         </div>
-        
-        <div class="table-container">
-            <div class="table-title">Pressure Advance (K)</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="row-header">Nozzle</th>
-                        <th>Name</th>
-                        <th>K</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="Nozzle02Row">
-                        <td class="row-header">0.2</td>
-                        <td id="name02"></td>
-                        <td id="kValue02"></td>
-                    </tr>
-                    <tr id="Nozzle04Row">
-                        <td class="row-header">0.4</td>
-                        <td id="name04"></td>
-                        <td id="kValue04"></td>
-                    </tr>
-                    <tr id="Nozzle06Row">
-                        <td class="row-header">0.6</td>
-                        <td id="name06"></td>
-                        <td id="kValue06"></td>
-                    </tr>
-                    <tr id="Nozzle08Row">
-                        <td class="row-header">0.8</td>
-                        <td id="name08"></td>
-                        <td id="kValue08"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="temperature-box">
+          <div class="temperature-title">Max Temp</div>
+          <div class="temperature-value" id="maxTemp">
+            250<span class="degree">°</span><span class="celsius">C</span>
+          </div>
         </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-title">Pressure Advance (K)</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="row-header">Nozzle</th>
+              <th>PA Profile</th>
+              <th>Factor K</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="Nozzle02Row">
+              <td class="row-header">0.2</td>
+              <td id="name02"></td>
+              <td id="kValue02"></td>
+            </tr>
+            <tr id="Nozzle04Row">
+              <td class="row-header">0.4</td>
+              <td id="name04"></td>
+              <td id="kValue04"></td>
+            </tr>
+            <tr id="Nozzle06Row">
+              <td class="row-header">0.6</td>
+              <td id="name06"></td>
+              <td id="kValue06"></td>
+            </tr>
+            <tr id="Nozzle08Row">
+              <td class="row-header">0.8</td>
+              <td id="name08"></td>
+              <td id="kValue08"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <script>
-        // Function to extract and parse URL parameters
-        function parseURLParams(url) {
-            const params = new URLSearchParams(new URL(url).search);
-            
-            // Extract common parameters
-            const ID = params.get('ID');
-            const M = params.get('M');
-            const C = params.get('C');
-            const NN = params.get('NN');
-            const NX = params.get('NX');
-            const FI = params.get('FI');
-            
-            // Function to handle Kx parameters
-            function parseKParam(k) {
-                const kValue = params.get(k);
-                if (kValue) {
-                    const [value, settingId, name] = kValue.split('~');
-                    return { value, settingId, name };
-                }
-                return null;
-            }
-            
-            // Extract Kx parameters
-            const K2 = parseKParam('K2');
-            const K4 = parseKParam('K4');
-            const K6 = parseKParam('K6');
-            const K8 = parseKParam('K8');
-            
-            // URL decode all parameters
-            return {
-                ID: decodeURIComponent(ID),
-                M: decodeURIComponent(M),
-                C: decodeURIComponent(C),
-                NN: decodeURIComponent(NN),
-                NX: decodeURIComponent(NX),
-                FI: decodeURIComponent(FI),
-                K2,
-                K4,
-                K6,
-                K8
-            };
+      // Function to extract and parse URL parameters
+      function parseURLParams(url) {
+        const params = new URLSearchParams(new URL(url).search);
+
+        // Extract common parameters
+        const ID = params.get("ID");
+        const M = params.get("M");
+        const C = params.get("C");
+        const NN = params.get("NN");
+        const NX = params.get("NX");
+        const FI = params.get("FI");
+
+        // Function to handle K parameters
+        function parseKParam(k) {
+          const kValue = params.get(k);
+          if (kValue) {
+            const [value, settingId, name] = kValue.split("~");
+            return { value, settingId, name };
+          }
+          return null;
         }
-        const url = window.location.href;
-        const parsedParams = parseURLParams(url);
 
-        // Display the parsed parameters in text
-        document.getElementById('tagId').textContent = parsedParams.ID;
-        document.getElementById('materialType').textContent = parsedParams.M;
-        const shortColor = `#${parsedParams.C.slice(0, 6)}`;
-        document.getElementById('colorHex').textContent = `${shortColor}`;
-        document.querySelector('.spool-outer').style.backgroundColor = shortColor;
-        document.getElementById('minTemp').textContent = parsedParams.NN;
-        document.getElementById('maxTemp').textContent = parsedParams.NX;
-        // document.getElementById('FI').textContent = parsedParams.FI;
+        // Extract Kx parameters
+        const K2 = parseKParam("K2");
+        const K4 = parseKParam("K4");
+        const K6 = parseKParam("K6");
+        const K8 = parseKParam("K8");
 
-        // Display K parameters
+        // URL decode all parameters
+        return {
+          ID: decodeURIComponent(ID),
+          M: decodeURIComponent(M),
+          C: decodeURIComponent(C),
+          NN: decodeURIComponent(NN),
+          NX: decodeURIComponent(NX),
+          FI: decodeURIComponent(FI),
+          K2,
+          K4,
+          K6,
+          K8,
+        };
+      }
+      const url = window.location.href;
+      const parsedParams = parseURLParams(url);
 
-        document.getElementById('Nozzle02Row').style.display = parsedParams.K2 ? 'table-row' : 'none';
-        document.getElementById('Nozzle04Row').style.display = parsedParams.K4 ? 'table-row' : 'none';
-        document.getElementById('Nozzle06Row').style.display = parsedParams.K6 ? 'table-row' : 'none';
-        document.getElementById('Nozzle08Row').style.display = parsedParams.K8 ? 'table-row' : 'none';
+      // Display the parsed parameters in text
+      document.getElementById("tagId").textContent = parsedParams.ID;
+      document.getElementById("materialType").textContent = parsedParams.M;
+      const shortColor = `#${parsedParams.C.slice(0, 6)}`;
+      document.getElementById("colorHex").textContent = `${shortColor}`;
+      document.querySelector(".spool-outer").style.backgroundColor = shortColor;
+      document.getElementById("minTemp").textContent = parsedParams.NN;
+      document.getElementById("maxTemp").textContent = parsedParams.NX;
+      // document.getElementById('FI').textContent = parsedParams.FI;
 
-        document.getElementById('name02').textContent = parsedParams.K2 ? parsedParams.K2.name : "";
-        document.getElementById('name04').textContent = parsedParams.K4 ? parsedParams.K4.name : "";
-        document.getElementById('name06').textContent = parsedParams.K6 ? parsedParams.K6.name : "";
-        document.getElementById('name08').textContent = parsedParams.K8 ? parsedParams.K8.name : "";
+      // Display K parameters
 
-        document.getElementById('kValue02').textContent = parsedParams.K2 ? parsedParams.K2.value : "";
-        document.getElementById('kValue04').textContent = parsedParams.K4 ? parsedParams.K4.value : "";
-        document.getElementById('kValue06').textContent = parsedParams.K6 ? parsedParams.K6.value : "";
-        document.getElementById('kValue08').textContent = parsedParams.K8 ? parsedParams.K8.value : "";
+      document.getElementById("Nozzle02Row").style.display = parsedParams.K2
+        ? "table-row"
+        : "none";
+      document.getElementById("Nozzle04Row").style.display = parsedParams.K4
+        ? "table-row"
+        : "none";
+      document.getElementById("Nozzle06Row").style.display = parsedParams.K6
+        ? "table-row"
+        : "none";
+      document.getElementById("Nozzle08Row").style.display = parsedParams.K8
+        ? "table-row"
+        : "none";
+
+      document.getElementById("name02").textContent = parsedParams.K2
+        ? parsedParams.K2.name
+        : "";
+      document.getElementById("name04").textContent = parsedParams.K4
+        ? parsedParams.K4.name
+        : "";
+      document.getElementById("name06").textContent = parsedParams.K6
+        ? parsedParams.K6.name
+        : "";
+      document.getElementById("name08").textContent = parsedParams.K8
+        ? parsedParams.K8.name
+        : "";
+
+      document.getElementById("kValue02").textContent = parsedParams.K2
+        ? parsedParams.K2.value
+        : "";
+      document.getElementById("kValue04").textContent = parsedParams.K4
+        ? parsedParams.K4.value
+        : "";
+      document.getElementById("kValue06").textContent = parsedParams.K6
+        ? parsedParams.K6.value
+        : "";
+      document.getElementById("kValue08").textContent = parsedParams.K8
+        ? parsedParams.K8.value
+        : "";
+
+      getFilamentInfo("data/base-filaments-index.json", parsedParams.FI).then(
+        (info) => {
+          if (info) {
+            document.getElementById("filament-name").textContent = info.name;
+            if (info.description) {
+              document.getElementById("filament-description").textContent = info.description;
+            } else {
+              document.getElementById("filament-decription-section").style.display = "none";
+            }
+          } else {
+            document.getElementById("filament-name").textContent = "Custom Filament";
+            document.getElementById("filament-decription-section").style.display = "none";
+          }
+        },
+      );
+
+      async function getFilamentInfo(url, filament_id) {
+        if (!filament_id) return null;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          return data.find((item) => item.filament_id === filament_id) || null;
+        } catch (error) {
+          console.error("Error:", error);
+          return null;
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
