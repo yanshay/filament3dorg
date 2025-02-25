@@ -334,7 +334,13 @@ td {
         font-size: 0.9em;
     }
 
+    .filament-description-container {
+      margin-top: 20px;
+      padding-top: 15px;
+    }
+
     .filament-description-text {
+        padding: 8px;
         font-size: 0.9em;
     }
 }
