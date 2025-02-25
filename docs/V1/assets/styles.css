@@ -7,7 +7,7 @@ body {
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,8 +237,12 @@ td {
 
 /* Responsive adjustments - force side-by-side even on smaller screens */
 @media (max-width: 768px) {
+    body {
+      align-items: start;
+    }
     .container {
-        padding: 25px;
+        margin-top: 20px;
+        padding: 20px;
     }
     
     .tag-container {
