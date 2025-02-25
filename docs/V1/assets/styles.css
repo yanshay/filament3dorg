@@ -339,8 +339,11 @@ td {
       padding-top: 15px;
     }
 
+    .filament-description-title {
+      margin-bottom: 10px;
+    }
+
     .filament-description-text {
-        padding: 8px;
         font-size: 0.9em;
     }
 }
