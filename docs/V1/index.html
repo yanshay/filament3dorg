@@ -133,8 +133,11 @@
 
       // Display the parsed parameters in text
       let originalId = binaryToHex(decodeBase64Url(parsedParams.ID));
-      document.getElementById("tagId").textContent =
-        parsedParams.ID + (originalId ? ` / ${originalId}` : "");
+      if (originalId) {
+        document.getElementById("tagId").textContent = originalId;
+      } else {
+        document.getElementById("tagId").textContent = parsedParams.ID;
+      }
       document.getElementById("materialType").textContent = parsedParams.M;
       const shortColor = `#${parsedParams.C.slice(0, 6)}`;
       document.getElementById("colorHex").textContent = `${shortColor}`;
