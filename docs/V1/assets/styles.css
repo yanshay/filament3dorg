@@ -116,7 +116,6 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 15px;
-  font-size: 1.5em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: fit-content;
@@ -125,19 +124,7 @@ body {
 
 .filament-name {
     font-weight: bold;
-    font-size: 1.2em;
-}
-
-.filament-info-line {
-    width: 100%;
-    height: 1px;  /* Line thickness */
-    background-color: rgba(0, 0, 0, 0.5);  /* Line color */
-    margin: 5px auto;  /* Center the line horizontally */
-}
-
-.filament-description {
-    font-size: 0.75em;
-    text-align: left;
+    font-size: 1.5em;
 }
 
 .material-type {
@@ -260,6 +247,27 @@ td {
     color: #555;
 }
 
+
+.filament-description-container {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.filament-description-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.filament-description-text {
+    font-size: 1.1em;
+}
+
 /* Create an actual hole in the spool */
 .cutout {
     position: absolute;
@@ -291,6 +299,10 @@ td {
       margin-bottom: 20px;
     }
 
+    .filament-info-wrapper {
+      bottom: 18.5%;
+    }
+
     .temperature-container {
         flex-direction: row; /* Keep them side by side */
         justify-content: center;
@@ -319,6 +331,10 @@ td {
 
     th, td {
         padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .filament-description-text {
         font-size: 0.9em;
     }
 }

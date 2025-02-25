@@ -24,13 +24,7 @@
           <div class="material-type" id="materialType">TYPE</div>
           <div class="filament-info-wrapper">
             <div class="filament-info">
-              <div class="filament-name" id="filament-name"></div>
-              <div id="filament-decription-section">
-                <div class="filament-info-line">Brand/Type</div>
-                <div class="filament-description" id="filament-description">
-                  Description
-                </div>
-              </div>
+              <div class="filament-name" id="filament-name">Brand/Type</div>
             </div>
           </div>
         </div>
@@ -84,6 +78,11 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="filament-description-container" id="filament-description-section">
+        <div class="filament-description-title">Notes</div>
+        <div class="filament-description-text" id="filament-description">blb sdfsfsd -fsd</div>
       </div>
     </div>
     <script>
@@ -194,14 +193,14 @@
                 info.description;
             } else {
               document.getElementById(
-                "filament-decription-section",
+                "filament-description-section",
               ).style.display = "none";
             }
           } else {
             document.getElementById("filament-name").textContent =
               "Custom Filament";
             document.getElementById(
-              "filament-decription-section",
+              "filament-description-section",
             ).style.display = "none";
           }
         },
