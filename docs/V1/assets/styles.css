@@ -206,6 +206,10 @@ body {
     color: #333;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

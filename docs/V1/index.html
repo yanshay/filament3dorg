@@ -47,6 +47,7 @@
 
       <div class="table-container">
         <div class="table-title">Pressure Advance (K)</div>
+        <div class="table-title underline" id="printerName"></div>
         <table>
           <thead>
             <tr>
@@ -80,54 +81,17 @@
         </table>
       </div>
 
-      <div class="filament-description-container" id="filament-description-section">
+      <div
+        class="filament-description-container"
+        id="filament-description-section"
+      >
         <div class="filament-description-title">Notes</div>
-        <div class="filament-description-text" id="filament-description">blb sdfsfsd -fsd</div>
+        <div class="filament-description-text" id="filament-description"></div>
       </div>
     </div>
     <script>
+      const kFactorsRegex = /^(.*)\((K.*)\)$/;
       // Function to extract and parse URL parameters
-      function parseURLParams(url) {
-        const params = new URLSearchParams(new URL(url).search);
-
-        // Extract common parameters
-        const ID = params.get("ID");
-        const M = params.get("M");
-        const C = params.get("C");
-        const NN = params.get("NN");
-        const NX = params.get("NX");
-        const FI = params.get("FI");
-
-        // Function to handle K parameters
-        function parseKParam(k) {
-          const kValue = params.get(k);
-          if (kValue) {
-            const [value, settingId, name] = kValue.split("~");
-            return { value, settingId, name };
-          }
-          return null;
-        }
-
-        // Extract Kx parameters
-        const K2 = parseKParam("K2");
-        const K4 = parseKParam("K4");
-        const K6 = parseKParam("K6");
-        const K8 = parseKParam("K8");
-
-        // URL decode all parameters
-        return {
-          ID: decodeURIComponent(ID),
-          M: decodeURIComponent(M),
-          C: decodeURIComponent(C),
-          NN: decodeURIComponent(NN),
-          NX: decodeURIComponent(NX),
-          FI: decodeURIComponent(FI),
-          K2,
-          K4,
-          K6,
-          K8,
-        };
-      }
       const url = window.location.href;
       const parsedParams = parseURLParams(url);
 
@@ -147,6 +111,11 @@
       // document.getElementById('FI').textContent = parsedParams.FI;
 
       // Display K parameters
+
+      document.getElementById("printerName").style.display =
+        parsedParams._printerName ? "inherit" : "none";
+      document.getElementById("printerName").textContent =
+        parsedParams._printerName;
 
       document.getElementById("Nozzle02Row").style.display = parsedParams.K2
         ? "table-row"
@@ -262,6 +231,81 @@
           // If an error occurs, return null
           return null;
         }
+      }
+
+      function parseURLParams(url) {
+        const result = customParseURL(url, kFactorsRegex);
+        let params = result.params;
+        const kFactors = result.unmatched;
+        var printerName;
+        if (kFactors.length != 0) {
+          // support only single K for now with a single Printer
+          const match = kFactors[0].match(kFactorsRegex);
+          printerName = match[1];
+          const kValues = match[2];
+          const [key, value] = kValues.split("=");
+          params.set(key, value);
+        }
+
+        // Extract common parameters
+        const ID = params.get("ID");
+        const M = params.get("M");
+        const C = params.get("C");
+        const NN = params.get("NN");
+        const NX = params.get("NX");
+        const FI = params.get("FI");
+
+        // Function to handle K parameters
+        function parseKParam(k) {
+          const kValue = params.get(k);
+          if (kValue) {
+            const [value, settingId, name] = kValue.split("~");
+            return { value, settingId, name };
+          }
+          return null;
+        }
+
+        // Extract Kx parameters
+        const K2 = parseKParam("K2");
+        const K4 = parseKParam("K4");
+        const K6 = parseKParam("K6");
+        const K8 = parseKParam("K8");
+
+        // URL decode all parameters
+        return {
+          ID: decodeURIComponent(ID),
+          M: decodeURIComponent(M),
+          C: decodeURIComponent(C),
+          NN: decodeURIComponent(NN),
+          NX: decodeURIComponent(NX),
+          FI: decodeURIComponent(FI),
+          K2,
+          K4,
+          K6,
+          K8,
+          _printerName: printerName,
+        };
+      }
+      function customParseURL(url, regex) {
+        const params = new Map();
+        const unmatched = [];
+        const queryString = url.split("?")[1] || "";
+
+        const parts = queryString.split("&");
+        for (const part of parts) {
+          const decodedPart = decodeURIComponent(part);
+
+          if (regex.test(decodedPart)) {
+            unmatched.push(decodedPart);
+          } else if (decodedPart.includes("=")) {
+            const [key, value] = decodedPart.split("=");
+            params.set(key, value);
+          } else if (decodedPart) {
+            unmatched.push(decodedPart);
+          }
+        }
+
+        return { params, unmatched };
       }
     </script>
   </body>
