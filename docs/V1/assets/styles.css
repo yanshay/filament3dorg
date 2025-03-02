@@ -24,6 +24,7 @@ body {
     backdrop-filter: blur(5px);
     margin-top: 40px;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .tag-container {
@@ -90,7 +91,7 @@ body {
 
 .color-hex {
     position: absolute;
-    top: 12%;
+    top: 11%;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
@@ -284,6 +285,77 @@ td {
     background-color: #ffffff; /* Matches background color of container */
     mix-blend-mode: destination-out;
 }
+
+.page-title {
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 2em;
+}
+
+.instructions {
+    text-align: start;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.2em;
+}
+
+.url-label {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.url-input {
+  word-break: break-all;
+  white-space: normal;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  width: 95%;
+  min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.file-content {
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  width: 95%;
+  min-height: 200px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.confirmation-message {
+  margin-top: 4px;
+  height: 2px;
+}
+
+.action-button {
+  padding: 20px 40px;
+  background-color: #007bff;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.3);
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  width: 180px;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 6px 20px rgba(0, 123, 255, 0.5);
+  margin
+}
+
 
 /* Responsive adjustments - force side-by-side even on smaller screens */
 @media (max-width: 768px) {

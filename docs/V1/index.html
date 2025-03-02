@@ -24,7 +24,7 @@
           <div class="material-type" id="materialType">TYPE</div>
           <div class="filament-info-wrapper">
             <div class="filament-info">
-              <div class="filament-name" id="filament-name">Brand/Type</div>
+              <div class="filament-name" id="filament-name"></div>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
         <div class="filament-description-text" id="filament-description"></div>
       </div>
     </div>
-    <script>
+    <script type="module">
       const kFactorsRegex = /^(.*)\((K.*)\)$/;
       // Function to extract and parse URL parameters
       const url = window.location.href;
@@ -156,27 +156,59 @@
         ? parsedParams.K8.value
         : "";
 
-      getFilamentInfo("data/base-filaments-index.json", parsedParams.FI).then(
-        (info) => {
-          if (info) {
-            document.getElementById("filament-name").textContent = info.name;
-            if (info.description) {
-              document.getElementById("filament-description").textContent =
-                info.description;
-            } else {
-              document.getElementById(
-                "filament-description-section",
-              ).style.display = "none";
-            }
+      const fetch_base = getFilamentInfo(
+        "data/base-filaments-index.json",
+        parsedParams.FI,
+      ).then(handleFilamentInfo);
+     
+      // http://localhost:8080/docs/V1/?ID=AQEARAAHBOSfom0mgQ&M=PLA&C=E05028FF&NN=190&NX=240&K4=0.024~PFUSced7c16e6d1066~3DHOJOR%20PLA%20Basic%20Red&FI=Pb79127b
+      // http://localhost:8080/docs/V1/?ID=AQEARAAHBOSfom0mgQ&M=PLA&C=E05028FF&NN=190&NX=240&K4=0.024~PFUSced7c16e6d1066~3DHOJOR%20PLA%20Basic%20Red&FI=GFL03
+
+      let fetches = [];
+      fetches.push(fetch_base);
+
+      const storedUrl = localStorage.getItem("customFilamentUrl");
+      if (storedUrl) {
+        const fetch_custom = getFilamentInfo(
+          storedUrl,
+          // "https://raw.githubusercontent.com/yanshay/MySpoolEase/refs/heads/main/custom-filaments-index.json",
+          parsedParams.FI,
+        ).then(handleFilamentInfo);
+        fetches.push(fetch_custom);
+      }
+      const results = await Promise.all(fetches);
+
+      if (!results[0] && !results[1]) {
+          // Next Version
+          // const link = document.createElement('a');
+          // link.href = 'settings.html';
+          // link.target = '_blank';
+          // link.textContent = 'Custom Filament';
+          // document.getElementById("filament-name").appendChild(link);
+
+          // In Next Version remove the following line
+          document.getElementById("filament-name").textContent = "Custom Filament";
+
+          document.getElementById(
+            "filament-description-section",
+          ).style.display = "none";
+      }
+
+      function handleFilamentInfo(info) {
+        console.log(`received custom info for ${parsedParams.FI} ${info}`);
+        if (info) {
+          document.getElementById("filament-name").textContent = info.name;
+          if (info.description) {
+            document.getElementById("filament-description").textContent =
+              info.description;
           } else {
-            document.getElementById("filament-name").textContent =
-              "Custom Filament";
             document.getElementById(
               "filament-description-section",
             ).style.display = "none";
           }
-        },
-      );
+        }
+        return info;
+      }
 
       async function getFilamentInfo(url, filament_id) {
         if (!filament_id) return null;
