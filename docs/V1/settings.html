@@ -64,6 +64,13 @@
         }
       }
 
+      function showUrl() {
+        const url = document.getElementById("urlInput").value;
+        if (url) {
+          document.getElementById("urlInput").value = url;
+        }
+      }
+
       // Function to test the URL with a fetch request
       function testUrl() {
         const url = document.getElementById("urlInput").value;
