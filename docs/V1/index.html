@@ -180,14 +180,14 @@
 
       if (!results[0] && !results[1]) {
           // Next Version
-          // const link = document.createElement('a');
-          // link.href = 'settings.html';
-          // link.target = '_blank';
-          // link.textContent = 'Custom Filament';
-          // document.getElementById("filament-name").appendChild(link);
+          const link = document.createElement('a');
+          link.href = 'settings.html';
+          link.target = '_blank';
+          link.textContent = 'Custom Filament';
+          document.getElementById("filament-name").appendChild(link);
 
           // In Next Version remove the following line
-          document.getElementById("filament-name").textContent = "Custom Filament";
+          // document.getElementById("filament-name").textContent = "Custom Filament";
 
           document.getElementById(
             "filament-description-section",
