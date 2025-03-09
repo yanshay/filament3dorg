@@ -252,6 +252,10 @@ td {
     color: #555;
 }
 
+.settings-update {
+    font-size: 1.1em;
+    margin-top: 20px;
+}
 
 .filament-description-container {
     margin-top: 30px;

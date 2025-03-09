@@ -76,8 +76,7 @@
               throw new Error("URL fetch failed.");
             })
             .then((data) => {
-              document.getElementById("testResult").textContent =
-                "Data fetched successfully: " + data.substring(0, 100) + "...";
+              document.getElementById("testResult").textContent = data;
             })
             .catch((error) => {
               document.getElementById("testResult").textContent =
