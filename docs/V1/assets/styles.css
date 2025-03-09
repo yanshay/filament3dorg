@@ -316,7 +316,7 @@ td {
   padding: 20px;
   border-radius: 20px;
   margin-top: 20px;
-  width: 95%;
+  width: 90%;
   min-height: 100px;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -326,7 +326,7 @@ td {
   padding: 20px;
   border-radius: 20px;
   margin-top: 20px;
-  width: 95%;
+  width: 90%;
   min-height: 200px;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -425,6 +425,10 @@ td {
 
     .filament-description-text {
         font-size: 0.9em;
+    }
+    
+    .action-button {
+      padding: 10px 20px;
     }
 }
 
