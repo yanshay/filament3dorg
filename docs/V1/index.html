@@ -268,15 +268,25 @@
         }
       }
 
+      function splitOnLastTilde(input) {
+          const match = input.match(/^(.*)~([^~]*)$/);
+          return match ? [match[1], match[2]] : [input, ""];
+      }
+
       function parseURLParams(url) {
         const result = customParseURL(url, kFactorsRegex);
         let params = result.params;
         const kFactors = result.unmatched;
         var printerName;
+        var printerSerial;
         if (kFactors.length != 0) {
           // support only single K for now with a single Printer
           const match = kFactors[0].match(kFactorsRegex);
-          printerName = match[1];
+          const printerNameAndSerial = match[1];
+          [printerName, printerSerial] = splitOnLastTilde(printerNameAndSerial);
+          if (!printerName) {
+            printerName = printerSerial;
+          }
           const kValues = match[2];
           const [key, value] = kValues.split("=");
           params.set(key, value);
@@ -319,6 +329,7 @@
           K6,
           K8,
           _printerName: printerName,
+          _printerSerial: printerSerial
         };
       }
       function customParseURL(url, regex) {
