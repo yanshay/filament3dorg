@@ -21,7 +21,10 @@
           <div class="cutout"></div>
           <div class="spool-inner"></div>
           <div class="color-hex" id="colorHex">#FFFFFF</div>
-          <div class="material-type" id="materialType">TYPE</div>
+          <div class="spool-center">
+            <div class="material-type" id="materialType">TYPE</div>
+            <div class="weights" id="weights">spool-g / total-new-g</div>
+          </div>
           <div class="filament-info-wrapper">
             <div class="filament-info">
               <div class="filament-name" id="filament-name"></div>
@@ -158,6 +161,22 @@
       document.getElementById("kValue08").textContent = parsedParams.K8
         ? parsedParams.K8.value
         : "";
+
+      if (!(parsedParams.WC!="undefined" || parsedParams.WN!="undefined")) {
+        document.getElementById("weights").style.display = "none";
+      } else {
+        var weights = "";
+        if (parsedParams.WC != "undefined") {
+          weights = weights + parsedParams.WC+"g";
+        }
+        if (parsedParams.WC!="undefined" && parsedParams.WN!="undefined") {
+          weights = weights + " / ";
+        }
+        if (parsedParams.WN != "undefined") {
+          weights = weights + parsedParams.WN+"g";
+        }
+        document.getElementById("weights").textContent = weights;
+      }
 
       const fetch_base = getFilamentInfo(
         "data/base-filaments-index.json",
@@ -299,6 +318,8 @@
         const NN = params.get("NN");
         const NX = params.get("NX");
         const FI = params.get("FI");
+        const WC = params.get("WC");
+        const WN = params.get("WN");
 
         // Function to handle K parameters
         function parseKParam(k) {
@@ -324,6 +345,8 @@
           NN: decodeURIComponent(NN),
           NX: decodeURIComponent(NX),
           FI: decodeURIComponent(FI),
+          WC: decodeURIComponent(WC),
+          WN: decodeURIComponent(WN),
           K2,
           K4,
           K6,
