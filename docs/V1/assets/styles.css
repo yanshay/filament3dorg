@@ -132,7 +132,7 @@ body {
 }
 .filament-info-title {
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     color: #555;
     font-size: 1.1em;
 }
@@ -424,7 +424,7 @@ td {
     }
 
     .filament-info-wrapper {
-      bottom: 18.5%;
+      bottom: 15%;
     }
 
     .note-value {
