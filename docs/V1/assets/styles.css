@@ -62,7 +62,7 @@ body {
 .spool-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     position: relative;
     overflow: visible;
 }
@@ -105,17 +105,20 @@ body {
 .filament-info-wrapper {
   transform: translate(-12.5%, 50%);
   position: absolute;
-  bottom: 17%;
+  bottom: calc(17% - 1.5%);
   left: 0;
   min-width: 133%; /* Adjust as needed */
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .filament-info {
   position: relative; /* Not absolute */
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
+  margin-bottom: 10px;
   border-radius: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -127,19 +130,27 @@ body {
     font-weight: bold;
     font-size: 1.5em;
 }
-
-.spool-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.filament-info-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.1em;
 }
 
-.material-type {
+.spool-center {
+  transform: translate(-12.5%, 0%);
+  position: absolute;
+  top: calc(0%);
+  left: 0;
+  min-width: 133%; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:  100%;
+}
+
+.material-description {
     font-size: 2.5em;
     font-weight: bold;
     color: #333;
@@ -155,10 +166,25 @@ body {
     
 }
 
+.note-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.note-value {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+}
+
 .temperature-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     flex-wrap: nowrap; /* Prevent wrapping */
 }
 
@@ -166,7 +192,7 @@ body {
     margin: 0 15px;
     background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(240,240,240,0.8));
     border-radius: 15px;
-    padding: 15px 25px;
+    padding: 10px 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s;
@@ -187,7 +213,7 @@ body {
 }
 
 .temperature-value {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
     color: #333;
     position: relative;
@@ -208,7 +234,7 @@ body {
 }
 
 .table-container {
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 15px;
     padding: 20px;
@@ -401,6 +427,10 @@ td {
       bottom: 18.5%;
     }
 
+    .note-value {
+        font-size: 1.1em;
+    }
+
     .temperature-container {
         flex-direction: row; /* Keep them side by side */
         justify-content: center;
@@ -415,10 +445,10 @@ td {
     }
     
     .temperature-value {
-        font-size: 1.5em;
+        font-size: 1.1em;
     }
     
-    .material-type {
+    .material-description {
         font-size: 1.8em;
     }
     .weights {
@@ -426,7 +456,7 @@ td {
     }
     
     .table-container {
-        margin-top: 20px;
+        margin-top: 10px;
         padding-top: 15px;
     }
 

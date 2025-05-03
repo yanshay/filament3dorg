@@ -22,15 +22,22 @@
           <div class="spool-inner"></div>
           <div class="color-hex" id="colorHex">#FFFFFF</div>
           <div class="spool-center">
-            <div class="material-type" id="materialType">TYPE</div>
+            <div class="filament-info">
+              <div class="material-description" id="material-description">TYPE</div>
+            </div>
             <div class="weights" id="weights">spool-g / total-new-g</div>
           </div>
           <div class="filament-info-wrapper">
             <div class="filament-info">
-              <div class="filament-name" id="filament-name"></div>
+              <div class="filament-info-title">Name in Slicer</div>
+              <div class="filament-name" id="filament-slicer-name"></div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="note-container" id="note-section">
+        <div class="filament-info-title">Note</div>
+        <div class="note-value" id="note-value"></div>
       </div>
 
       <div class="temperature-container">
@@ -108,7 +115,7 @@
       } else {
         document.getElementById("tagId").textContent = parsedParams.ID;
       }
-      document.getElementById("materialType").textContent = parsedParams.M;
+      document.getElementById("material-description").textContent = parsedParams.M;
       const shortColor = `#${parsedParams.C.slice(0, 6)}`;
       document.getElementById("colorHex").textContent = `${shortColor}`;
       document.querySelector(".spool-outer").style.backgroundColor = shortColor;
@@ -177,6 +184,28 @@
         }
         document.getElementById("weights").textContent = weights;
       }
+      if (parsedParams.B!="undefined" || parsedParams.MS!="undefined" || parsedParams.CN != "undefined") {
+        var fullName = "";
+        if (parsedParams.B!="undefined") {
+          fullName = fullName + parsedParams.B + " ";
+        }
+
+        fullName = fullName + parsedParams.M; // always exists
+
+        if (parsedParams.MS!="undefined") {
+          fullName = fullName + " " + parsedParams.MS;
+        }
+        if (parsedParams.CN!="undefined") {
+          fullName = fullName + " " + parsedParams.CN;
+        }
+        document.getElementById("material-description").textContent = fullName;
+      }
+
+      if (parsedParams.N!="undefined") {
+        document.getElementById("note-value").textContent = parsedParams.N;
+      } else {
+        document.getElementById("note-section").style.display = "none";
+      }
 
       const fetch_base = getFilamentInfo(
         "data/base-filaments-index.json",
@@ -206,10 +235,10 @@
           link.href = 'settings.html';
           link.target = '_blank';
           link.textContent = 'Custom Filament';
-          document.getElementById("filament-name").appendChild(link);
+          document.getElementById("filament-slicer-name").appendChild(link);
           
           // In Next Version remove the following line
-          // document.getElementById("filament-name").textContent = "Custom Filament";
+          // document.getElementById("filament-slicer-name").textContent = "Custom Filament";
 
           document.getElementById(
             "filament-description-section",
@@ -219,7 +248,7 @@
       function handleFilamentInfo(info) {
         console.log(`received custom info for ${parsedParams.FI} ${info}`);
         if (info) {
-          document.getElementById("filament-name").textContent = info.name;
+          document.getElementById("filament-slicer-name").textContent = info.name;
           if (info.description) {
             document.getElementById("filament-description").textContent =
               info.description;
@@ -320,6 +349,11 @@
         const FI = params.get("FI");
         const WC = params.get("WC");
         const WN = params.get("WN");
+        
+        const B = params.get("B");
+        const MS = params.get("MS");
+        const CN = params.get("CN");
+        const N = params.get("N");
 
         // Function to handle K parameters
         function parseKParam(k) {
@@ -347,6 +381,10 @@
           FI: decodeURIComponent(FI),
           WC: decodeURIComponent(WC),
           WN: decodeURIComponent(WN),
+          B: decodeURIComponent(B),
+          MS: decodeURIComponent(MS),
+          CN: decodeURIComponent(CN),
+          N: decodeURIComponent(N),
           K2,
           K4,
           K6,
