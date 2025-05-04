@@ -1,37 +1,71 @@
 [
   {
-    "filament_id": "GFB99",
-    "name": "Generic ABS",
-    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+    "filament_id": "GFA00",
+    "name": "Bambu PLA Basic"
   },
   {
-    "filament_id": "GFL51",
-    "name": "Fiberon PA6-GF"
+    "filament_id": "GFA01",
+    "name": "Bambu PLA Matte"
   },
   {
-    "filament_id": "GFG96",
-    "name": "Generic PETG HF"
+    "filament_id": "GFA02",
+    "name": "Bambu PLA Metal",
+    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
   },
   {
-    "filament_id": "GFG50",
-    "name": "Bambu PETG-CF"
+    "filament_id": "GFA03",
+    "name": "Bambu PLA Impact"
+  },
+  {
+    "filament_id": "GFA05",
+    "name": "Bambu PLA Silk",
+    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
+  },
+  {
+    "filament_id": "GFA06",
+    "name": "Bambu PLA Silk+",
+    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
+  },
+  {
+    "filament_id": "GFA07",
+    "name": "Bambu PLA Marble"
+  },
+  {
+    "filament_id": "GFA08",
+    "name": "Bambu PLA Sparkle"
+  },
+  {
+    "filament_id": "GFA09",
+    "name": "Bambu PLA Tough"
+  },
+  {
+    "filament_id": "GFA11",
+    "name": "Bambu PLA Aero",
+    "description": "This filament is only used to print models with a low density usually, and some special parameters are required. To get better printing quality, please refer to this wiki: Instructions for printing RC model with foaming PLA (PLA Aero)."
+  },
+  {
+    "filament_id": "GFA12",
+    "name": "Bambu PLA Glow"
+  },
+  {
+    "filament_id": "GFA13",
+    "name": "Bambu PLA Dynamic"
   },
   {
     "filament_id": "GFA15",
     "name": "Bambu PLA Galaxy"
   },
   {
-    "filament_id": "GFL54",
-    "name": "Fiberon PET-CF"
+    "filament_id": "GFA16",
+    "name": "Bambu PLA Wood"
   },
   {
-    "filament_id": "GFN06",
-    "name": "Bambu PPA-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+    "filament_id": "GFA18",
+    "name": "Bambu PLA Lite"
   },
   {
-    "filament_id": "GFB61",
-    "name": "PolyLite ASA"
+    "filament_id": "GFA50",
+    "name": "Bambu PLA-CF"
   },
   {
     "filament_id": "GFB00",
@@ -39,30 +73,14 @@
     "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
   },
   {
-    "filament_id": "GFC00",
-    "name": "Bambu PC"
+    "filament_id": "GFB01",
+    "name": "Bambu ASA",
+    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
   },
   {
-    "filament_id": "GFG99",
-    "name": "Generic PETG"
-  },
-  {
-    "filament_id": "GFP97",
-    "name": "Generic PP"
-  },
-  {
-    "filament_id": "GFT02",
-    "name": "Bambu PPS-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFU01",
-    "name": "Bambu TPU 95A",
-    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
-  },
-  {
-    "filament_id": "GFB51",
-    "name": "Bambu ASA-CF"
+    "filament_id": "GFB02",
+    "name": "Bambu ASA-Aero",
+    "description": "This filament is only used to print models with a low density usually, and some special parameters are required. To get better printing quality, please refer to this wiki: ASA Aero Printing Guide."
   },
   {
     "filament_id": "GFB50",
@@ -70,44 +88,39 @@
     "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
   },
   {
-    "filament_id": "GFA08",
-    "name": "Bambu PLA Sparkle"
+    "filament_id": "GFB51",
+    "name": "Bambu ASA-CF"
   },
   {
-    "filament_id": "GFL00",
-    "name": "PolyLite PLA"
+    "filament_id": "GFB60",
+    "name": "PolyLite ABS"
+  },
+  {
+    "filament_id": "GFB61",
+    "name": "PolyLite ASA"
+  },
+  {
+    "filament_id": "GFB98",
+    "name": "Generic ASA",
+    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFB99",
+    "name": "Generic ABS",
+    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFC00",
+    "name": "Bambu PC"
   },
   {
     "filament_id": "GFC01",
     "name": "Bambu PC FR"
   },
   {
-    "filament_id": "GFU02",
-    "name": "Bambu TPU for AMS",
-    "description": "If you are to print a kind of soft TPU, please don't slice with this profile, and it is only for TPU that has high enough hardness (not less than 55D) and is compatible with the AMS. To get better printing quality, please refer to this wiki: TPU printing guide."
-  },
-  {
-    "filament_id": "GFS99",
-    "name": "Generic PVA",
-    "description": "This is a water-soluble support filament, and usually it is only for the support structure and not for the model body. Printing this filament is of many requirements, and to get better printing quality, please refer to this wiki: PVA Printing Guide."
-  },
-  {
-    "filament_id": "GFP96",
-    "name": "Generic PP-CF"
-  },
-  {
-    "filament_id": "GFN08",
-    "name": "Bambu PA6-GF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFA12",
-    "name": "Bambu PLA Glow"
-  },
-  {
-    "filament_id": "GFN04",
-    "name": "Bambu PAHT-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+    "filament_id": "GFC99",
+    "name": "Generic PC",
+    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
   },
   {
     "filament_id": "GFG00",
@@ -115,9 +128,167 @@
     "description": "To get better transparent or translucent results with the corresponding filament, please refer to this wiki: Printing tips for transparent PETG."
   },
   {
-    "filament_id": "GFS03",
-    "name": "Bambu Support For PA/PET",
-    "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
+    "filament_id": "GFG01",
+    "name": "Bambu PETG Translucent",
+    "description": "To get better transparent or translucent results with the corresponding filament, please refer to this wiki: Printing tips for transparent PETG."
+  },
+  {
+    "filament_id": "GFG02",
+    "name": "Bambu PETG HF"
+  },
+  {
+    "filament_id": "GFG50",
+    "name": "Bambu PETG-CF"
+  },
+  {
+    "filament_id": "GFG60",
+    "name": "PolyLite PETG"
+  },
+  {
+    "filament_id": "GFG96",
+    "name": "Generic PETG HF"
+  },
+  {
+    "filament_id": "GFG97",
+    "name": "Generic PCTG"
+  },
+  {
+    "filament_id": "GFG98",
+    "name": "Generic PETG-CF"
+  },
+  {
+    "filament_id": "GFG99",
+    "name": "Generic PETG"
+  },
+  {
+    "filament_id": "GFL00",
+    "name": "PolyLite PLA"
+  },
+  {
+    "filament_id": "GFL01",
+    "name": "PolyTerra PLA"
+  },
+  {
+    "filament_id": "GFL03",
+    "name": "eSUN PLA+"
+  },
+  {
+    "filament_id": "GFL04",
+    "name": "Overture PLA"
+  },
+  {
+    "filament_id": "GFL05",
+    "name": "Overture Matte PLA"
+  },
+  {
+    "filament_id": "GFL06",
+    "name": "Fiberon PETG-ESD"
+  },
+  {
+    "filament_id": "GFL50",
+    "name": "Fiberon PA6-CF"
+  },
+  {
+    "filament_id": "GFL51",
+    "name": "Fiberon PA6-GF"
+  },
+  {
+    "filament_id": "GFL52",
+    "name": "Fiberon PA12-CF"
+  },
+  {
+    "filament_id": "GFL53",
+    "name": "Fiberon PA612-CF"
+  },
+  {
+    "filament_id": "GFL54",
+    "name": "Fiberon PET-CF"
+  },
+  {
+    "filament_id": "GFL55",
+    "name": "Fiberon PETG-rCF"
+  },
+  {
+    "filament_id": "GFL95",
+    "name": "Generic PLA High Speed"
+  },
+  {
+    "filament_id": "GFL96",
+    "name": "Generic PLA Silk",
+    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
+  },
+  {
+    "filament_id": "GFL98",
+    "name": "Generic PLA-CF"
+  },
+  {
+    "filament_id": "GFL99",
+    "name": "Generic PLA",
+    "description": "The generic presets are conservatively tuned for compatibility with a wider range of filaments. For higher printing quality and speeds, please use Bambu filaments with Bambu presets."
+  },
+  {
+    "filament_id": "GFN03",
+    "name": "Bambu PA-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN04",
+    "name": "Bambu PAHT-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN05",
+    "name": "Bambu PA6-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN06",
+    "name": "Bambu PPA-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN07",
+    "name": "Bambu PPA-GF"
+  },
+  {
+    "filament_id": "GFN08",
+    "name": "Bambu PA6-GF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN96",
+    "name": "Generic PPA-GF"
+  },
+  {
+    "filament_id": "GFN97",
+    "name": "Generic PPA-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN98",
+    "name": "Generic PA-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFN99",
+    "name": "Generic PA",
+    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFP95",
+    "name": "Generic PP-GF"
+  },
+  {
+    "filament_id": "GFP96",
+    "name": "Generic PP-CF"
+  },
+  {
+    "filament_id": "GFP97",
+    "name": "Generic PP"
+  },
+  {
+    "filament_id": "GFP98",
+    "name": "Generic PE-CF"
   },
   {
     "filament_id": "GFP99",
@@ -128,161 +299,18 @@
     "name": "Generic PHA"
   },
   {
-    "filament_id": "GFG01",
-    "name": "Bambu PETG Translucent",
-    "description": "To get better transparent or translucent results with the corresponding filament, please refer to this wiki: Printing tips for transparent PETG."
-  },
-  {
-    "filament_id": "GFG60",
-    "name": "PolyLite PETG"
-  },
-  {
-    "filament_id": "GFA09",
-    "name": "Bambu PLA Tough"
-  },
-  {
-    "filament_id": "GFL55",
-    "name": "Fiberon PETG-rCF"
-  },
-  {
-    "filament_id": "GFT98",
-    "name": "Generic PPS-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFL06",
-    "name": "Fiberon PETG-ESD"
-  },
-  {
-    "filament_id": "GFL53",
-    "name": "Fiberon PA612-CF"
-  },
-  {
-    "filament_id": "GFA16",
-    "name": "Bambu PLA Wood"
-  },
-  {
     "filament_id": "GFR99",
     "name": "Generic EVA"
   },
   {
-    "filament_id": "GFL05",
-    "name": "Overture Matte PLA"
-  },
-  {
-    "filament_id": "GFU98",
-    "name": "Generic TPU for AMS",
-    "description": "If you are to print a kind of soft TPU, please don't slice with this profile, and it is only for TPU that has high enough hardness (not less than 55D) and is compatible with the AMS. To get better printing quality, please refer to this wiki: TPU printing guide."
-  },
-  {
-    "filament_id": "GFU00",
-    "name": "Bambu TPU 95A HF",
-    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
-  },
-  {
-    "filament_id": "GFL03",
-    "name": "eSUN PLA+"
-  },
-  {
-    "filament_id": "GFS05",
-    "name": "Bambu Support For PLA/PETG",
+    "filament_id": "GFS00",
+    "name": "Bambu Support W",
     "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
-    "filament_id": "GFS97",
-    "name": "Generic BVOH"
-  },
-  {
-    "filament_id": "GFN03",
-    "name": "Bambu PA-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFL50",
-    "name": "Fiberon PA6-CF"
-  },
-  {
-    "filament_id": "GFL52",
-    "name": "Fiberon PA12-CF"
-  },
-  {
-    "filament_id": "GFA05",
-    "name": "Bambu PLA Silk",
-    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
-  },
-  {
-    "filament_id": "GFN97",
-    "name": "Generic PPA-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFA07",
-    "name": "Bambu PLA Marble"
-  },
-  {
-    "filament_id": "GFL96",
-    "name": "Generic PLA Silk",
-    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
-  },
-  {
-    "filament_id": "GFP98",
-    "name": "Generic PE-CF"
-  },
-  {
-    "filament_id": "GFL99",
-    "name": "Generic PLA",
-    "description": "The generic presets are conservatively tuned for compatibility with a wider range of filaments. For higher printing quality and speeds, please use Bambu filaments with Bambu presets."
-  },
-  {
-    "filament_id": "GFG97",
-    "name": "Generic PCTG"
-  },
-  {
-    "filament_id": "GFT97",
-    "name": "Generic PPS"
-  },
-  {
-    "filament_id": "GFL95",
-    "name": "Generic PLA High Speed"
-  },
-  {
-    "filament_id": "GFA50",
-    "name": "Bambu PLA-CF"
-  },
-  {
-    "filament_id": "GFA03",
-    "name": "Bambu PLA Impact"
-  },
-  {
-    "filament_id": "GFB01",
-    "name": "Bambu ASA",
-    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFT01",
-    "name": "Bambu PET-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFP95",
-    "name": "Generic PP-GF"
-  },
-  {
-    "filament_id": "GFG98",
-    "name": "Generic PETG-CF"
-  },
-  {
-    "filament_id": "GFA02",
-    "name": "Bambu PLA Metal",
-    "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
-  },
-  {
-    "filament_id": "GFA13",
-    "name": "Bambu PLA Dynamic"
-  },
-  {
-    "filament_id": "GFL04",
-    "name": "Overture PLA"
+    "filament_id": "GFS01",
+    "name": "Bambu Support G",
+    "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
     "filament_id": "GFS02",
@@ -290,61 +318,8 @@
     "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
-    "filament_id": "GFG02",
-    "name": "Bambu PETG HF"
-  },
-  {
-    "filament_id": "GFS06",
-    "name": "Bambu Support for ABS",
-    "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
-  },
-  {
-    "filament_id": "GFC99",
-    "name": "Generic PC",
-    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFA01",
-    "name": "Bambu PLA Matte"
-  },
-  {
-    "filament_id": "GFL98",
-    "name": "Generic PLA-CF"
-  },
-  {
-    "filament_id": "GFN96",
-    "name": "Generic PPA-GF"
-  },
-  {
-    "filament_id": "GFB02",
-    "name": "Bambu ASA-Aero",
-    "description": "This filament is only used to print models with a low density usually, and some special parameters are required. To get better printing quality, please refer to this wiki: ASA Aero Printing Guide."
-  },
-  {
-    "filament_id": "GFS98",
-    "name": "Generic HIPS"
-  },
-  {
-    "filament_id": "GFN05",
-    "name": "Bambu PA6-CF",
-    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
-  },
-  {
-    "filament_id": "GFA00",
-    "name": "Bambu PLA Basic"
-  },
-  {
-    "filament_id": "GFA11",
-    "name": "Bambu PLA Aero",
-    "description": "This filament is only used to print models with a low density usually, and some special parameters are required. To get better printing quality, please refer to this wiki: Instructions for printing RC model with foaming PLA (PLA Aero)."
-  },
-  {
-    "filament_id": "GFL01",
-    "name": "PolyTerra PLA"
-  },
-  {
-    "filament_id": "GFS00",
-    "name": "Bambu Support W",
+    "filament_id": "GFS03",
+    "name": "Bambu Support For PA/PET",
     "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
@@ -353,22 +328,110 @@
     "description": "This is a water-soluble support filament, and usually it is only for the support structure and not for the model body. Printing this filament is of many requirements, and to get better printing quality, please refer to this wiki: PVA Printing Guide."
   },
   {
-    "filament_id": "GFS01",
-    "name": "Bambu Support G",
+    "filament_id": "GFS05",
+    "name": "Bambu Support For PLA/PETG",
     "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
-    "filament_id": "GFB60",
-    "name": "PolyLite ABS"
+    "filament_id": "GFS06",
+    "name": "Bambu Support for ABS",
+    "description": "This is a non-water-soluble support filament, and usually it is only for the support structure and not for the model body. To get better printing quality, please refer to this wiki: Printing Tips for Support Filament and Support Function."
   },
   {
-    "filament_id": "GFA06",
-    "name": "Bambu PLA Silk+",
+    "filament_id": "GFS97",
+    "name": "Generic BVOH"
+  },
+  {
+    "filament_id": "GFS98",
+    "name": "Generic HIPS"
+  },
+  {
+    "filament_id": "GFS99",
+    "name": "Generic PVA",
+    "description": "This is a water-soluble support filament, and usually it is only for the support structure and not for the model body. Printing this filament is of many requirements, and to get better printing quality, please refer to this wiki: PVA Printing Guide."
+  },
+  {
+    "filament_id": "GFSNL02",
+    "name": "SUNLU PLA Matte"
+  },
+  {
+    "filament_id": "GFSNL03",
+    "name": "SUNLU PLA+"
+  },
+  {
+    "filament_id": "GFSNL04",
+    "name": "SUNLU PLA+ 2.0"
+  },
+  {
+    "filament_id": "GFSNL05",
+    "name": "SUNLU Silk PLA+",
     "description": "To make the prints get higher gloss, please dry the filament before use, and set the outer wall speed to be 40 to 60 mm/s when slicing."
   },
   {
-    "filament_id": "GFB98",
-    "name": "Generic ASA",
-    "description": "When printing this filament, there's a risk of warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+    "filament_id": "GFSNL06",
+    "name": "SUNLU PLA Marble"
+  },
+  {
+    "filament_id": "GFSNL07",
+    "name": "SUNLU Wood PLA"
+  },
+  {
+    "filament_id": "GFSNL08",
+    "name": "SUNLU PETG",
+    "description": "To get better transparent or translucent results with the corresponding filament, please refer to this wiki: Printing tips for transparent PETG."
+  },
+  {
+    "filament_id": "GFT01",
+    "name": "Bambu PET-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFT02",
+    "name": "Bambu PPS-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFT97",
+    "name": "Generic PPS"
+  },
+  {
+    "filament_id": "GFT98",
+    "name": "Generic PPS-CF",
+    "description": "When printing this filament, there's a risk of nozzle clogging, oozing, warping and low layer adhesion strength. To get better results, please refer to this wiki: Printing Tips for High Temp / Engineering materials."
+  },
+  {
+    "filament_id": "GFU00",
+    "name": "Bambu TPU 95A HF",
+    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU01",
+    "name": "Bambu TPU 95A",
+    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU02",
+    "name": "Bambu TPU for AMS",
+    "description": "If you are to print a kind of soft TPU, please don't slice with this profile, and it is only for TPU that has high enough hardness (not less than 55D) and is compatible with the AMS. To get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU03",
+    "name": "Bambu TPU 90A",
+    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU04",
+    "name": "Bambu TPU 85A",
+    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU98",
+    "name": "Generic TPU for AMS",
+    "description": "If you are to print a kind of soft TPU, please don't slice with this profile, and it is only for TPU that has high enough hardness (not less than 55D) and is compatible with the AMS. To get better printing quality, please refer to this wiki: TPU printing guide."
+  },
+  {
+    "filament_id": "GFU99",
+    "name": "Generic TPU",
+    "description": "This filament is too soft and not compatible with the AMS. Printing it is of many requirements, and to get better printing quality, please refer to this wiki: TPU printing guide."
   }
 ]
