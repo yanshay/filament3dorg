@@ -91,7 +91,7 @@
         </table>
       </div>
       <div id="settings-update" class="settings-update">
-        <a href="settings.html" target="_blank">Update Custom Filaments Settings URL</a>
+        <a href="settings.html" target="_blank">Update Custom Filaments Settings</a>
       </div>
 
       <div
@@ -218,31 +218,51 @@
       let fetches = [];
       fetches.push(fetch_base);
 
-      const storedUrl = localStorage.getItem("customFilamentUrl");
-      if (storedUrl) {
-        const fetch_custom = getFilamentInfo(
-          storedUrl,
-          // "https://raw.githubusercontent.com/yanshay/MySpoolEase/refs/heads/main/custom-filaments-index.json",
-          parsedParams.FI,
-        ).then(handleFilamentInfo);
-        fetches.push(fetch_custom);
+      // First search for locally stored filaments as CSV (the new approach)
+      const storedCustomCsvFilaments = localStorage.getItem("customFilamentCsv");
+      var foundFilamentName = false;
+      if (storedCustomCsvFilaments) {
+        const name = getFilamentNamenById(storedCustomCsvFilaments, parsedParams.FI);
+        if (name) {
+          const info = {filament_id: parsedParams.FI, name: name };
+          handleFilamentInfo(info);
+          foundFilamentName = true;
+        }
       }
-      const results = await Promise.all(fetches);
 
-      if (!results[0] && !results[1]) {
-          // Next Version
-          const link = document.createElement('a');
-          link.href = 'settings.html';
-          link.target = '_blank';
-          link.textContent = 'Custom Filament';
-          document.getElementById("filament-slicer-name").appendChild(link);
-          
-          // In Next Version remove the following line
-          // document.getElementById("filament-slicer-name").textContent = "Custom Filament";
+      // Base filaments - still use this approach, for now
+      // Custom filaments - only for backwards compatibility (worth it?)
+      if (!foundFilamentName) {
+        const storedUrl = localStorage.getItem("customFilamentUrl");
+        if (storedUrl) {
+          const fetch_custom = getFilamentInfo(
+            storedUrl,
+            parsedParams.FI,
+          ).then(handleFilamentInfo);
+          fetches.push(fetch_custom);
+        }
+        const results = await Promise.all(fetches);
 
-          document.getElementById(
-            "filament-description-section",
-          ).style.display = "none";
+        if (!results[0] && !results[1]) {
+            // Next Version
+            const link = document.createElement('a');
+            link.href = 'settings.html';
+            link.target = '_blank';
+            link.textContent = 'Custom Filament';
+            document.getElementById("filament-slicer-name").appendChild(link);
+            
+            // In Next Version remove the following line
+            // document.getElementById("filament-slicer-name").textContent = "Custom Filament";
+
+            document.getElementById(
+              "filament-description-section",
+            ).style.display = "none";
+        }
+      }
+
+      function getFilamentNamenById(csv, filament_id) {
+        return csv.split('\n').map(line => line.trim()).filter(Boolean).map(line => line.split(','))
+          .find(parts => parts[0] === filament_id)?.[1] ?? null;
       }
 
       function handleFilamentInfo(info) {
