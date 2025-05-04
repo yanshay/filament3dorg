@@ -18,7 +18,8 @@
           In Web-Config under <b>Filaments</b> section, <b>Custom Filaments CSV</b>
           <ul>
             <li>On your slicer desktop, open Web-Config and follow the instructions to generate the CSV data</li>
-            <li>On mobile, go to the same Web-Config section, tap <b>Copy to Clipboard</b>, paste the copied data here, then tap <b>Store CSV</b></li>
+            <li>On mobile, go to the same Web-Config section, tap <b>Copy to Clipboard</b></li>
+            <li>On mobile, on this page, tap below <b>Paste from Clipboard</b>, then tap <b>Store CSV</b></li>
             <p>Note: Custom filament information will be available <b>only</b> on the mobile device where you stored the CSV data.</p>
           </ul>
         </p>
@@ -27,6 +28,12 @@
       <div>
         <textarea class="file-content" id="csvData"></textarea>
       </div>
+      <p
+        class="confirmation-message"
+        id="csvConfirmationMessage"
+        style="color: green"
+      ></p>
+      <button class="action-button" id="pasteCsvBtn">Paste from Clipboard</button>
       <button class="action-button" id="applyCsvBtn">Store CSV</button>
       <hr/>
       <h2>For SpoolEase Console Versions Until (and Including) 0.3.0</h2>
@@ -123,13 +130,21 @@
         let csv = document.getElementById("csvData").value;
         if (csv && csv !== "") {
           localStorage.setItem("customFilamentCsv", csv);
-          document.getElementById("confirmationMessage").textContent =
+          document.getElementById("csvConfirmationMessage").textContent =
             "CSV Stored Successfully";
         } else {
           localStorage.removeItem("customFilamentCsv");
-          document.getElementById("confirmationMessage").textContent =
+          document.getElementById("csvConfirmationMessage").textContent =
             "CSV Removed From Storate";
         }
+      }
+
+      function pasteCsv() {
+        navigator.clipboard.readText().then(text => {
+            document.getElementById("csvData").value = text;
+        }).catch(err => {
+          alert('Paste failed');
+        });
       }
 
       // Check if there's a URL stored in localStorage and pre-fill the input
@@ -148,6 +163,7 @@
       document.getElementById("applyBtn").addEventListener("click", setUrl);
       document.getElementById("testBtn").addEventListener("click", testUrl);
       document.getElementById("applyCsvBtn").addEventListener("click", setCsv);
+      document.getElementById("pasteCsvBtn").addEventListener("click", pasteCsv);
     </script>
   </body>
 </html>
