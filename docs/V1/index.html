@@ -174,13 +174,13 @@
       } else {
         var weights = "";
         if (parsedParams.WC != "undefined") {
-          weights = weights + parsedParams.WC+"g";
+          weights = weights + parsedParams.WC+"g (Core)";
         }
         if (parsedParams.WC!="undefined" && parsedParams.WN!="undefined") {
           weights = weights + " / ";
         }
         if (parsedParams.WN != "undefined") {
-          weights = weights + parsedParams.WN+"g";
+          weights = weights + parsedParams.WN+"g (New)";
         }
         document.getElementById("weights").textContent = weights;
       }
