@@ -169,10 +169,18 @@
         ? parsedParams.K8.value
         : "";
 
-      if (!(parsedParams.WC!="undefined" || parsedParams.WN!="undefined")) {
+      if (!(parsedParams.WC!="undefined" || parsedParams.WN!="undefined" || parsedParams.WA !="undefined")) {
         document.getElementById("weights").style.display = "none";
       } else {
         var weights = "";
+        if (parsedParams.WA != "undefined") {
+          const weight = parseInt(parsedParams.WA, 10);
+          let wa_to_show = (weight > 500 && weight % 500) === 0 ? `${weight / 1000}kg` : `${weight}g`;
+          weights = weights + wa_to_show + " (Label)";
+        }
+        if (parsedParams.WA!="undefined" && (parsedParams.WC!="undefined" || parsedParams.WN!="undefined")) {
+          weights = weights + " / ";
+        }
         if (parsedParams.WC != "undefined") {
           weights = weights + parsedParams.WC+"g (Core)";
         }
@@ -367,6 +375,7 @@
         const NN = params.get("NN");
         const NX = params.get("NX");
         const FI = params.get("FI");
+        const WA = params.get("WA");
         const WC = params.get("WC");
         const WN = params.get("WN");
         
@@ -399,6 +408,7 @@
           NN: decodeURIComponent(NN),
           NX: decodeURIComponent(NX),
           FI: decodeURIComponent(FI),
+          WA: decodeURIComponent(WA),
           WC: decodeURIComponent(WC),
           WN: decodeURIComponent(WN),
           B: decodeURIComponent(B),
