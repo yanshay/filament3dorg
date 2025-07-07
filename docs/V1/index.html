@@ -117,7 +117,7 @@
       // Display the parsed parameters in text
       let originalId = binaryToHex(decodeBase64Url(parsedParams.ID));
 
-      const encodedDateTimeNumber = parseStrictNumber(parsedParams.TE);
+      const encodedDateTimeNumber = parseStrictNumber(parsedParams.DE);
       const encodeDateTime = encodedDateTimeNumber
         ? new Date(encodedDateTimeNumber * 1000)
         : null;
@@ -454,7 +454,7 @@
         const MS = params.get("MS");
         const CN = params.get("CN");
         const N = params.get("N");
-        const TE = params.get("TE");
+        const DE = params.get("DE");
 
         // Function to handle K parameters
         function parseKParam(k) {
@@ -487,7 +487,7 @@
           MS: decodeURIComponent(MS),
           CN: decodeURIComponent(CN),
           N: decodeURIComponent(N),
-          TE: decodeURIComponent(TE),
+          DE: decodeURIComponent(DE),
           K2,
           K4,
           K6,
