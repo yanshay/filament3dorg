@@ -10,8 +10,10 @@
     <div class="container">
       <div class="tag-container">
         <div class="tag-box">
-          <div class="tag-title">Tag ID</div>
-          <div class="tag-value" id="tagId">Tag ID</div>
+          <div class="tag-title">Tag ID:</div>
+          <div tag-value id="tagId"></div>
+          <div class="tag-title">Encoded On:</div>
+          <div tag-value id="encodedDateTime">-</div>
         </div>
       </div>
 
@@ -23,7 +25,9 @@
           <div class="color-hex" id="colorHex">#FFFFFF</div>
           <div class="spool-center">
             <div class="filament-info">
-              <div class="material-description" id="material-description">TYPE</div>
+              <div class="material-description" id="material-description">
+                TYPE
+              </div>
               <div class="weights" id="weights">spool-g / total-new-g</div>
             </div>
           </div>
@@ -91,7 +95,9 @@
         </table>
       </div>
       <div id="settings-update" class="settings-update">
-        <a href="settings.html" target="_blank">Update Custom Filaments Settings</a>
+        <a href="settings.html" target="_blank"
+          >Update Custom Filaments Settings</a
+        >
       </div>
 
       <div
@@ -110,12 +116,21 @@
 
       // Display the parsed parameters in text
       let originalId = binaryToHex(decodeBase64Url(parsedParams.ID));
+
+      const encodedDateTimeNumber = parseStrictNumber(parsedParams.TE);
+      const encodeDateTime = encodedDateTimeNumber
+        ? new Date(encodedDateTimeNumber * 1000)
+        : null;
+      document.getElementById("encodedDateTime").textContent =
+        formatDateTimeShort(encodeDateTime);
+
       if (originalId) {
         document.getElementById("tagId").textContent = originalId;
       } else {
         document.getElementById("tagId").textContent = parsedParams.ID;
       }
-      document.getElementById("material-description").textContent = parsedParams.M;
+      document.getElementById("material-description").textContent =
+        parsedParams.M;
       const shortColor = `#${parsedParams.C.slice(0, 6)}`;
       document.getElementById("colorHex").textContent = `${shortColor}`;
       document.querySelector(".spool-outer").style.backgroundColor = shortColor;
@@ -169,47 +184,63 @@
         ? parsedParams.K8.value
         : "";
 
-      if (!(parsedParams.WC!="undefined" || parsedParams.WN!="undefined" || parsedParams.WA !="undefined")) {
+      if (
+        !(
+          parsedParams.WC != "undefined" ||
+          parsedParams.WN != "undefined" ||
+          parsedParams.WA != "undefined"
+        )
+      ) {
         document.getElementById("weights").style.display = "none";
       } else {
         var weights = "";
         if (parsedParams.WA != "undefined") {
           const weight = parseInt(parsedParams.WA, 10);
-          let wa_to_show = (weight > 500 && weight % 500) === 0 ? `${weight / 1000}kg` : `${weight}g`;
+          let wa_to_show =
+            (weight > 500 && weight % 500) === 0
+              ? `${weight / 1000}kg`
+              : `${weight}g`;
           weights = weights + wa_to_show + " (Label)";
         }
-        if (parsedParams.WA!="undefined" && (parsedParams.WC!="undefined" || parsedParams.WN!="undefined")) {
+        if (
+          parsedParams.WA != "undefined" &&
+          (parsedParams.WC != "undefined" || parsedParams.WN != "undefined")
+        ) {
           weights = weights + " / ";
         }
         if (parsedParams.WC != "undefined") {
-          weights = weights + parsedParams.WC+"g (Core)";
+          weights = weights + parsedParams.WC + "g (Core)";
         }
-        if (parsedParams.WC!="undefined" && parsedParams.WN!="undefined") {
+        if (parsedParams.WC != "undefined" && parsedParams.WN != "undefined") {
           weights = weights + " / ";
         }
         if (parsedParams.WN != "undefined") {
-          weights = weights + parsedParams.WN+"g (New)";
+          weights = weights + parsedParams.WN + "g (New)";
         }
         document.getElementById("weights").textContent = weights;
       }
-      if (parsedParams.B!="undefined" || parsedParams.MS!="undefined" || parsedParams.CN != "undefined") {
+      if (
+        parsedParams.B != "undefined" ||
+        parsedParams.MS != "undefined" ||
+        parsedParams.CN != "undefined"
+      ) {
         var fullName = "";
-        if (parsedParams.B!="undefined") {
+        if (parsedParams.B != "undefined") {
           fullName = fullName + parsedParams.B + " ";
         }
 
         fullName = fullName + parsedParams.M; // always exists
 
-        if (parsedParams.MS!="undefined") {
+        if (parsedParams.MS != "undefined") {
           fullName = fullName + " " + parsedParams.MS;
         }
-        if (parsedParams.CN!="undefined") {
+        if (parsedParams.CN != "undefined") {
           fullName = fullName + " " + parsedParams.CN;
         }
         document.getElementById("material-description").textContent = fullName;
       }
 
-      if (parsedParams.N!="undefined") {
+      if (parsedParams.N != "undefined") {
         document.getElementById("note-value").textContent = parsedParams.N;
       } else {
         document.getElementById("note-section").style.display = "none";
@@ -219,7 +250,7 @@
         "data/base-filaments-index.json",
         parsedParams.FI,
       ).then(handleFilamentInfo);
-     
+
       // http://localhost:8080/docs/V1/?ID=AQEARAAHBOSfom0mgQ&M=PLA&C=E05028FF&NN=190&NX=240&K4=0.024~PFUSced7c16e6d1066~3DHOJOR%20PLA%20Basic%20Red&FI=Pb79127b
       // http://localhost:8080/docs/V1/?ID=AQEARAAHBOSfom0mgQ&M=PLA&C=E05028FF&NN=190&NX=240&K4=0.024~PFUSced7c16e6d1066~3DHOJOR%20PLA%20Basic%20Red&FI=GFL03
 
@@ -227,12 +258,16 @@
       fetches.push(fetch_base);
 
       // First search for locally stored filaments as CSV (the new approach)
-      const storedCustomCsvFilaments = localStorage.getItem("customFilamentCsv");
+      const storedCustomCsvFilaments =
+        localStorage.getItem("customFilamentCsv");
       var foundFilamentName = false;
       if (storedCustomCsvFilaments) {
-        const name = getFilamentNamenById(storedCustomCsvFilaments, parsedParams.FI);
+        const name = getFilamentNamenById(
+          storedCustomCsvFilaments,
+          parsedParams.FI,
+        );
         if (name) {
-          const info = {filament_id: parsedParams.FI, name: name };
+          const info = { filament_id: parsedParams.FI, name: name };
           handleFilamentInfo(info);
           foundFilamentName = true;
         }
@@ -243,40 +278,46 @@
       if (!foundFilamentName) {
         const storedUrl = localStorage.getItem("customFilamentUrl");
         if (storedUrl) {
-          const fetch_custom = getFilamentInfo(
-            storedUrl,
-            parsedParams.FI,
-          ).then(handleFilamentInfo);
+          const fetch_custom = getFilamentInfo(storedUrl, parsedParams.FI).then(
+            handleFilamentInfo,
+          );
           fetches.push(fetch_custom);
         }
         const results = await Promise.all(fetches);
 
         if (!results[0] && !results[1]) {
-            // Next Version
-            const link = document.createElement('a');
-            link.href = 'settings.html';
-            link.target = '_blank';
-            link.textContent = 'Custom Filament';
-            document.getElementById("filament-slicer-name").appendChild(link);
-            
-            // In Next Version remove the following line
-            // document.getElementById("filament-slicer-name").textContent = "Custom Filament";
+          // Next Version
+          const link = document.createElement("a");
+          link.href = "settings.html";
+          link.target = "_blank";
+          link.textContent = "Custom Filament";
+          document.getElementById("filament-slicer-name").appendChild(link);
 
-            document.getElementById(
-              "filament-description-section",
-            ).style.display = "none";
+          // In Next Version remove the following line
+          // document.getElementById("filament-slicer-name").textContent = "Custom Filament";
+
+          document.getElementById(
+            "filament-description-section",
+          ).style.display = "none";
         }
       }
 
       function getFilamentNamenById(csv, filament_id) {
-        return csv.split('\n').map(line => line.trim()).filter(Boolean).map(line => line.split(','))
-          .find(parts => parts[0] === filament_id)?.[1] ?? null;
+        return (
+          csv
+            .split("\n")
+            .map((line) => line.trim())
+            .filter(Boolean)
+            .map((line) => line.split(","))
+            .find((parts) => parts[0] === filament_id)?.[1] ?? null
+        );
       }
 
       function handleFilamentInfo(info) {
         console.log(`received custom info for ${parsedParams.FI} ${info}`);
         if (info) {
-          document.getElementById("filament-slicer-name").textContent = info.name;
+          document.getElementById("filament-slicer-name").textContent =
+            info.name;
           if (info.description) {
             document.getElementById("filament-description").textContent =
               info.description;
@@ -326,6 +367,36 @@
         }
       }
 
+      function parseStrictNumber(s) {
+        const trimmed = s.trim();
+        if (trimmed === "") return null;
+        const n = Number(trimmed);
+        return isNaN(n) ? null : n;
+      }
+      function formatDateTimeShort(dt) {
+        if (!dt) return "(Not Available)";
+        const date = formatDateShort(dt);
+        const time = dt.toLocaleTimeString(undefined, {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        return `${date}, ${time}`;
+      }
+
+      function formatDateShort(dt) {
+        if (!dt) return "";
+        // const fullYear = dt.getFullYear().toString();
+        // const shortYear = fullYear.slice(-2);
+        // let dateStr = dt.toLocaleDateString();
+        // dateStr = dateStr.replace(fullYear, shortYear);
+        const dateStr = dt.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        return dateStr;
+      }
+
       function binaryToHex(binary) {
         try {
           let hex = "";
@@ -345,8 +416,8 @@
       }
 
       function splitOnLastTilde(input) {
-          const match = input.match(/^(.*)~([^~]*)$/);
-          return match ? [match[1], match[2]] : [input, ""];
+        const match = input.match(/^(.*)~([^~]*)$/);
+        return match ? [match[1], match[2]] : [input, ""];
       }
 
       function parseURLParams(url) {
@@ -378,11 +449,12 @@
         const WA = params.get("WA");
         const WC = params.get("WC");
         const WN = params.get("WN");
-        
+
         const B = params.get("B");
         const MS = params.get("MS");
         const CN = params.get("CN");
         const N = params.get("N");
+        const TE = params.get("TE");
 
         // Function to handle K parameters
         function parseKParam(k) {
@@ -415,12 +487,13 @@
           MS: decodeURIComponent(MS),
           CN: decodeURIComponent(CN),
           N: decodeURIComponent(N),
+          TE: decodeURIComponent(TE),
           K2,
           K4,
           K6,
           K8,
           _printerName: printerName,
-          _printerSerial: printerSerial
+          _printerSerial: printerSerial,
         };
       }
       function customParseURL(url, regex) {
