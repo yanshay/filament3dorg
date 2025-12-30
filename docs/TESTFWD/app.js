@@ -106,17 +106,71 @@
   async function runHttpsMode() {
     document.getElementById('httpsMode').style.display = 'block';
     
-    // Check for fwdsuccess param
-    const { hashParams } = parseParams(window.location.href);
-    if (hashParams.fwdidsuccess && hashParams.fwdidsuccess[0]) {
-      await setDBValue('lastForwardSuccess', hashParams.fwdidsuccess[0]);
+    // Check for fwdidsuccess param and return flag
+    const { hashParams, questionParams } = parseParams(window.location.href);
+    
+    const fwdidsuccess = (hashParams.fwdidsuccess && hashParams.fwdidsuccess[0]) || 
+                         (questionParams.fwdidsuccess && questionParams.fwdidsuccess[0]);
+    
+    const returnFlag = (hashParams.return && hashParams.return[0]) || 
+                       (questionParams.return && questionParams.return[0]);
+    
+    // Step 3: If we received fwdidsuccess, save it and check for return flag
+    if (fwdidsuccess) {
+      console.log('Found fwdidsuccess:', fwdidsuccess);
+      try {
+        await setDBValue('lastForwardSuccess', fwdidsuccess);
+        console.log('Saved lastForwardSuccess:', fwdidsuccess);
+        
+        // If return=true, redirect back to HTTP
+        if (returnFlag === 'true') {
+          console.log('Return flag detected, redirecting back to HTTP');
+          
+          const forwardAddress = await getDBValue('forwardAddress');
+          if (forwardAddress) {
+            const path = window.location.pathname;
+            
+            // Get all params except fwdidsuccess and return
+            let params = [];
+            for (let key in hashParams) {
+              if (key !== 'fwdidsuccess' && key !== 'return') {
+                hashParams[key].forEach(val => {
+                  params.push(`${key}=${encodeURIComponent(val)}`);
+                });
+              }
+            }
+            for (let key in questionParams) {
+              if (key !== 'fwdidsuccess' && key !== 'return') {
+                questionParams[key].forEach(val => {
+                  params.push(`${key}=${encodeURIComponent(val)}`);
+                });
+              }
+            }
+            
+            let returnUrl = `http://${forwardAddress}${path}`;
+            if (params.length > 0) {
+              returnUrl += '#' + params.join('&');
+            }
+            
+            console.log('Redirecting to:', returnUrl);
+            window.location.href = returnUrl;
+            return; // Don't continue loading the page
+          }
+        }
+      } catch (err) {
+        console.error('Error saving lastForwardSuccess:', err);
+      }
     }
     
     // Load and display DB values
     async function loadDBValues() {
-      document.getElementById('forwardAddress').value = await getDBValue('forwardAddress');
-      document.getElementById('forwardId').value = await getDBValue('forwardId');
-      document.getElementById('lastForwardSuccess').value = await getDBValue('lastForwardSuccess');
+      try {
+        document.getElementById('forwardAddress').value = await getDBValue('forwardAddress');
+        document.getElementById('forwardId').value = await getDBValue('forwardId');
+        document.getElementById('lastForwardSuccess').value = await getDBValue('lastForwardSuccess');
+      } catch (err) {
+        console.error('Error loading DB values:', err);
+      }
     }
     
     await loadDBValues();
@@ -137,7 +191,7 @@
       alert('Saved');
     };
     
-    // Forward button
+    // Forward button - Step 1: Forward to HTTP
     document.getElementById('forwardBtn').onclick = async () => {
       let forwardId = parseInt(await getDBValue('forwardId') || '0');
       forwardId++;
@@ -175,27 +229,57 @@
       params.push(`fwdid=${forwardId}`);
       
       newUrl += params.join('&');
+      console.log('Forwarding to HTTP:', newUrl);
       window.location.href = newUrl;
     };
   }
   
-  // HTTP mode
+  // HTTP mode - Step 2: Immediately redirect back to HTTPS with success
   function runHttpMode() {
     document.getElementById('httpMode').style.display = 'block';
     
-    // Extract fwdid and create iframe
-    const { hashParams } = parseParams(window.location.href);
-    if (hashParams.fwdid && hashParams.fwdid[0]) {
-      const fwdid = hashParams.fwdid[0];
+    // Extract fwdid
+    const { hashParams, questionParams } = parseParams(window.location.href);
+    
+    const fwdid = (hashParams.fwdid && hashParams.fwdid[0]) || 
+                  (questionParams.fwdid && questionParams.fwdid[0]);
+    
+    if (fwdid) {
+      console.log('Found fwdid:', fwdid, '- Redirecting back to HTTPS');
+      
       const path = window.location.pathname;
-      const iframeUrl = `https://info.filament3d.org${path}#fwdidsuccess=${fwdid}`;
       
-      const iframe = document.createElement('iframe');
-      iframe.src = iframeUrl;
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+      // Get all params except fwdid
+      let params = [];
+      for (let key in hashParams) {
+        if (key !== 'fwdid') {
+          hashParams[key].forEach(val => {
+            params.push(`${key}=${encodeURIComponent(val)}`);
+          });
+        }
+      }
+      for (let key in questionParams) {
+        if (key !== 'fwdid') {
+          questionParams[key].forEach(val => {
+            params.push(`${key}=${encodeURIComponent(val)}`);
+          });
+        }
+      }
       
-      document.getElementById('iframeInfo').textContent = `Created hidden iframe to: ${iframeUrl}`;
+      // Add fwdidsuccess and return flag
+      params.push(`fwdidsuccess=${fwdid}`);
+      params.push(`return=true`);
+      
+      const httpsUrl = `https://info.filament3d.org${path}#${params.join('&')}`;
+      
+      console.log('Redirecting to HTTPS:', httpsUrl);
+      document.getElementById('httpModeStatus').textContent = `Confirming success... redirecting to: ${httpsUrl}`;
+      
+      // Redirect immediately
+      window.location.href = httpsUrl;
+    } else {
+      document.getElementById('httpModeStatus').textContent = 'No fwdid parameter found - already confirmed or direct access';
+      console.log('No fwdid found - this is either a return from HTTPS or direct access');
     }
   }
   
